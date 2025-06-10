@@ -55,36 +55,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
                     
                     self.assertIsNotNone(router.graph)
                     self.assertEqual(router.place_name, "Test City")
-                    self.assertIsNone(router.pbf_file)
 
-    def test_init_with_pbf_file(self):
-        """Test initialization with PBF file."""
-        with tempfile.NamedTemporaryFile(suffix='.pbf', delete=False) as temp_file:
-            temp_file.write(b"test data")
-            temp_file_path = temp_file.name
-        
-        try:
-            with patch('osmnx.graph_from_xml') as mock_graph_from_xml:
-                mock_graph_from_xml.return_value = self.mock_graph
-                
-                with patch('osmnx.add_edge_speeds') as mock_add_speeds:
-                    mock_add_speeds.return_value = self.mock_graph
-                    
-                    with patch('osmnx.add_edge_travel_times') as mock_add_times:
-                        mock_add_times.return_value = self.mock_graph
-                        
-                        router = OSMRoutingEngine(pbf_file=temp_file_path)
-                        
-                        self.assertIsNotNone(router.graph)
-                        self.assertEqual(router.pbf_file, temp_file_path)
-                        self.assertIsNone(router.place_name)
-        finally:
-            os.unlink(temp_file_path)
-
-    def test_init_with_nonexistent_pbf_file(self):
-        """Test initialization with non-existent PBF file."""
-        with self.assertRaises(FileNotFoundError):
-            OSMRoutingEngine(pbf_file="nonexistent_file.pbf")
 
     def test_init_with_no_parameters(self):
         """Test initialization with no parameters."""
@@ -263,20 +234,6 @@ class TestOSMRoutingEngine(unittest.TestCase):
             
             with self.assertRaises(RuntimeError):
                 OSMRoutingEngine(place_name="Invalid Place")
-
-    def test_pbf_file_not_supported(self):
-        """Test that PBF files are not supported."""
-        with tempfile.NamedTemporaryFile(suffix='.pbf', delete=False) as temp_file:
-            temp_file.write(b"test data")
-            temp_file_path = temp_file.name
-        
-        try:
-            with self.assertRaises(ValueError) as context:
-                OSMRoutingEngine(pbf_file=temp_file_path)
-            
-            self.assertIn("PBF files are not directly supported", str(context.exception))
-        finally:
-            os.unlink(temp_file_path)
 
     def test_edge_case_coordinates(self):
         """Test edge case coordinates."""

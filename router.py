@@ -7,48 +7,43 @@ from typing import List, Tuple, Optional
 from pathlib import Path
 
 class OSMRoutingEngine:
-    def __init__(self, pbf_file: Optional[str] = None, place_name: Optional[str] = None):
+    def __init__(self, osm_xml_file: Optional[str] = None, place_name: Optional[str] = None):
         """
-        Initialize routing engine with either PBF file or place name.
+        Initialize routing engine with either OSM XML file or place name.
         
         Args:
-            pbf_file: Path to OSM PBF file (optional)
+            osm_xml_file: Path to OSM XML file (optional)
             place_name: Name of place to download (optional)
         """
         self.graph = None
-        self.pbf_file = pbf_file
-        self.place_name = place_name
-        
+
         # Validate input parameters
-        if not pbf_file and not place_name:
-            raise ValueError("Must provide either PBF file or place name")
+        if not osm_xml_file and not place_name:
+            raise ValueError("Must provide either OSM XML file or place name")
         
-        if pbf_file and not os.path.exists(pbf_file):
-            raise FileNotFoundError(f"PBF file not found: {pbf_file}")
+        if osm_xml_file and not os.path.exists(osm_xml_file):
+            raise FileNotFoundError(f"OSM XML file not found: {osm_xml_file}")
+
+        self.osm_xml_file = osm_xml_file
+        self.place_name = place_name
             
         self.load_graph()
     
     def load_graph(self):
-        """Load the graph from PBF file or OSM download."""
+        """Load the graph from OSM XML file or OSM download."""
         print("Loading graph...")
         start_time = time.time()
         
         try:
-            if self.pbf_file:
-                # OSMnx doesn't directly support PBF files, so we need to convert or use a different approach
-                if str(self.pbf_file).endswith('.pbf'):
-                    print("Warning: OSMnx doesn't directly support PBF files.")
-                    print("Consider using osmconvert or osmium to convert PBF to OSM XML format first.")
-                    raise ValueError("PBF files are not directly supported by OSMnx. Please convert to OSM XML format first.")
-                else:
-                    # Load from OSM XML file
-                    ox.settings.useful_tags_way = ox.settings.useful_tags_way + ['oneway']
-                    self.graph = ox.graph_from_xml(self.pbf_file)
+            if self.osm_xml_file:
+                # Load from OSM XML file
+                ox.settings.useful_tags_way = ox.settings.useful_tags_way + ['oneway']
+                self.graph = ox.graph_from_xml(self.osm_xml_file)
             elif self.place_name:
                 # Download graph from place name
                 self.graph = ox.graph_from_place(self.place_name, network_type='drive')
             else:
-                raise ValueError("Must provide either PBF file or place name")
+                raise ValueError("Must provide either OSM XML file or place name")
             
             # Ensure graph is properly loaded and has data
             if self.graph is None or len(self.graph.nodes()) == 0:

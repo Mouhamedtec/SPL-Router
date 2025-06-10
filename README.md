@@ -80,10 +80,9 @@ print(f"Path has {len(path_coords)} coordinate points")
 
 ```python
 # Initialize with an OSM XML file
-router = OSMRoutingEngine(pbf_file="path/to/your/data.osm")
+router = OSMRoutingEngine(osm_xml_file="path/to/your/data.osm")
 
-# Note: PBF files are not directly supported by OSMnx
-# Convert PBF to OSM XML format first using tools like osmconvert
+
 ```
 
 ### Visualization
@@ -168,9 +167,9 @@ The test suite includes:
 
 #### Constructor
 ```python
-OSMRoutingEngine(pbf_file=None, place_name=None)
+OSMRoutingEngine(osm_xml_file=None, place_name=None)
 ```
-- `pbf_file`: Path to OSM XML file (optional)
+- `osm_xml_file`: Path to OSM XML file (optional)
 - `place_name`: Name of place to download (optional)
 
 #### Methods
@@ -222,10 +221,9 @@ The engine includes comprehensive error handling for:
 
 ## 🚨 Limitations
 
-1. **PBF Files**: OSMnx doesn't directly support PBF files. Convert to OSM XML format first.
-2. **Internet Connection**: Place-based initialization requires internet access.
-3. **Memory Usage**: Large areas may require significant memory.
-4. **Coordinate System**: Automatic projection may not work for all areas.
+1. **Internet Connection**: Place-based initialization requires internet access.
+2. **Memory Usage**: Large areas may require significant memory.
+3. **Coordinate System**: Automatic projection may not work for all areas.
 
 ## 🤝 Contributing
 
