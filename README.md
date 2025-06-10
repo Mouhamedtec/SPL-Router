@@ -1,4 +1,4 @@
-# OSMnx Routing Engine
+# SPL-Router (Routing Engine)
 
 A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap data processing and route calculation. This project provides a simple yet powerful interface for finding optimal routes between geographical points with comprehensive visualization capabilities.
 
@@ -34,8 +34,8 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd New-folder
+git clone https://github.com/Mouhamedtec/SPL-Router.git
+SPL-Router
 ```
 
 ### 2. Install Dependencies
@@ -60,7 +60,7 @@ pip install -r requirements_test.txt
 ### Basic Usage
 
 ```python
-from router_osmnx import OSMRoutingEngine
+from router import OSMRoutingEngine
 
 # Initialize with a place name (downloads data automatically)
 router = OSMRoutingEngine(place_name="San Francisco, California")
@@ -110,7 +110,7 @@ router.plot_route_stats(start_point, end_point)
 ### Complete Example
 
 ```python
-from router_osmnx import OSMRoutingEngine
+from router import OSMRoutingEngine
 
 def main():
     # Initialize router
@@ -141,17 +141,17 @@ if __name__ == "__main__":
 
 ### Run All Tests
 ```bash
-python test_router_osmnx.py
+python test_router.py
 ```
 
 ### Run with Pytest
 ```bash
-pytest test_router_osmnx.py -v
+pytest test_router.py -v
 ```
 
 ### Run with Coverage
 ```bash
-pytest test_router_osmnx.py --cov=router_osmnx --cov-report=html
+pytest test_router.py --cov=router_osmnx --cov-report=html
 ```
 
 ### Test Coverage
@@ -238,14 +238,14 @@ The engine includes comprehensive error handling for:
 ### Development Setup
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd New-folder
+git clone https://github.com/Mouhamedtec/SPL-Router.git
+SPL-Router
 
 # Install development dependencies
 pip install -r requirements_test.txt
 
 # Run tests
-python test_router_osmnx.py
+python test_router.py
 ```
 
 ## 📄 License
