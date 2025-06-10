@@ -35,7 +35,7 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd New-folder
+cd SPL-Router
 ```
 
 ### 2. Install Dependencies
@@ -48,11 +48,6 @@ pip install osmnx networkx pandas matplotlib folium numpy
 #### Option B: Install with requirements file
 ```bash
 pip install -r requirements.txt
-```
-
-#### Option C: Install for development (includes testing)
-```bash
-pip install -r requirements_test.txt
 ```
 
 ## 📖 Usage
@@ -141,17 +136,17 @@ if __name__ == "__main__":
 
 ### Run All Tests
 ```bash
-python test_router_osmnx.py
+python test_router.py
 ```
 
 ### Run with Pytest
 ```bash
-pytest test_router_osmnx.py -v
+pytest test_router.py -v
 ```
 
 ### Run with Coverage
 ```bash
-pytest test_router_osmnx.py --cov=router_osmnx --cov-report=html
+pytest test_router.py --cov=router_osmnx --cov-report=html
 ```
 
 ### Test Coverage
@@ -239,13 +234,13 @@ The engine includes comprehensive error handling for:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd New-folder
+cd SPL-Router
 
 # Install development dependencies
-pip install -r requirements_test.txt
+pip install -r requirements.txt
 
 # Run tests
-python test_router_osmnx.py
+python test_router.py
 ```
 
 ## 📄 License
