@@ -262,13 +262,6 @@ If you encounter any issues or have questions:
 2. Create a new issue with detailed information
 3. Include error messages and system information
 
-## 🔄 Version History
-
-- **v1.0.0**: Initial release with basic routing functionality
-- **v1.1.0**: Added visualization capabilities
-- **v1.2.0**: Enhanced error handling and validation
-- **v1.3.0**: Added comprehensive test suite
-
 ---
 
 **Note**: This routing engine is designed for educational and research purposes. For production use, consider additional optimizations and error handling based on your specific requirements. 
