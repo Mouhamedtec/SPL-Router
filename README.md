@@ -1,4 +1,4 @@
-# SPL Routing Engine
+# OSMnx Routing Engine
 
 A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap data processing and route calculation. This project provides a simple yet powerful interface for finding optimal routes between geographical points with comprehensive visualization capabilities.
 
@@ -35,7 +35,7 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd SPL-Router
+cd New-folder
 ```
 
 ### 2. Install Dependencies
@@ -50,12 +50,17 @@ pip install osmnx networkx pandas matplotlib folium numpy
 pip install -r requirements.txt
 ```
 
+#### Option C: Install for development (includes testing)
+```bash
+pip install -r requirements_test.txt
+```
+
 ## 📖 Usage
 
 ### Basic Usage
 
 ```python
-from router import OSMRoutingEngine
+from router_osmnx import OSMRoutingEngine
 
 # Initialize with a place name (downloads data automatically)
 router = OSMRoutingEngine(place_name="San Francisco, California")
@@ -105,7 +110,7 @@ router.plot_route_stats(start_point, end_point)
 ### Complete Example
 
 ```python
-from router import OSMRoutingEngine
+from router_osmnx import OSMRoutingEngine
 
 def main():
     # Initialize router
@@ -136,17 +141,17 @@ if __name__ == "__main__":
 
 ### Run All Tests
 ```bash
-python test_router.py
+python test_router_osmnx.py
 ```
 
 ### Run with Pytest
 ```bash
-pytest test_router.py -v
+pytest test_router_osmnx.py -v
 ```
 
 ### Run with Coverage
 ```bash
-pytest test_router.py --cov=router_osmnx --cov-report=html
+pytest test_router_osmnx.py --cov=router_osmnx --cov-report=html
 ```
 
 ### Test Coverage
@@ -157,7 +162,7 @@ The test suite includes:
 - Error handling validation
 - Mock testing for external dependencies
 
-## 📚 API Reference
+## �� API Reference
 
 ### OSMRoutingEngine Class
 
@@ -234,13 +239,13 @@ The engine includes comprehensive error handling for:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd SPL-Router
+cd New-folder
 
 # Install development dependencies
-pip install -r requirements.txt
+pip install -r requirements_test.txt
 
 # Run tests
-python test_router.py
+python test_router_osmnx.py
 ```
 
 ## 📄 License
@@ -257,11 +262,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/Mouhamedtec/SPL-Router/issues) page
-2. Create a new issue with detailed information
-3. Include error messages and system information
+1. Create a new issue with detailed information
+2. Include error messages and system information
 
 ---
 
-**Note**: This routing engine is designed for educational and research purposes. For production use, consider additional optimizations and error handling based on your specific requirements. 
+**Note**: This routing engine is designed for educational and research purposes. For production use, consider additional optimizations and error handling based on your specific requirements.
