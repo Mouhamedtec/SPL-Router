@@ -243,8 +243,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
             mock_map.save.assert_called_once()
 
     @patch('matplotlib.pyplot')
-    @patch('numpy')
-    def test_plot_route_stats(self, mock_numpy, mock_plt):
+    def test_plot_route_stats(self, mock_plt):
         """Test route statistics plotting."""
         router = OSMRoutingEngine(place_name="Test")
         router.graph = self.mock_graph
@@ -298,6 +297,16 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
 class TestOSMRoutingEngineIntegration(unittest.TestCase):
     """Integration tests for the OSMRoutingEngine class."""
+
+    def setUp(self):
+        """Set up mock graph for integration tests."""
+        self.mock_graph = nx.MultiDiGraph()
+        self.mock_graph.add_node(1, x=-122.4194, y=37.7749)
+        self.mock_graph.add_node(2, x=-122.4313, y=37.8051)
+        self.mock_graph.add_node(3, x=-122.4250, y=37.7900)
+        self.mock_graph.add_edge(1, 2, length=1000.0)
+        self.mock_graph.add_edge(2, 3, length=800.0)
+        self.mock_graph.add_edge(1, 3, length=1500.0)
 
     @unittest.skip("Skip integration test - requires internet connection")
     def test_real_place_routing(self):
