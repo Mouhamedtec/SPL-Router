@@ -60,10 +60,10 @@ pip install -r requirements_test.txt
 ### Basic Usage
 
 ```python
-from router import OSMRoutingEngine
+from router import SPLRouterEngine
 
 # Initialize with a place name (downloads data automatically)
-router = OSMRoutingEngine(place_name="San Francisco, California")
+router = SPLRouterEngine(place_name="San Francisco, California")
 
 # Define start and end points
 start_point = (-122.4194, 37.7749)  # Union Square
@@ -80,7 +80,7 @@ print(f"Path has {len(path_coords)} coordinate points")
 
 ```python
 # Initialize with an OSM XML file
-router = OSMRoutingEngine(osm_xml_file="path/to/your/data.osm")
+router = SPLRouterEngine(osm_xml_file="path/to/your/data.osm")
 
 
 ```
@@ -109,11 +109,11 @@ router.plot_route_stats(start_point, end_point)
 ### Complete Example
 
 ```python
-from router import OSMRoutingEngine
+from router import SPLRouterEngine
 
 def main():
     # Initialize router
-    router = OSMRoutingEngine(place_name="San Francisco, California")
+    router = SPLRouterEngine(place_name="San Francisco, California")
     
     # Print graph information
     print("Graph info:", router.get_graph_info())
@@ -140,17 +140,17 @@ if __name__ == "__main__":
 
 ### Run All Tests
 ```bash
-python test_router.py
+python tests/test_router.py
 ```
 
 ### Run with Pytest
 ```bash
-pytest test_router.py -v
+pytest tests/test_router.py -v
 ```
 
 ### Run with Coverage
 ```bash
-pytest test_router.py --cov=router_osmnx --cov-report=html
+pytest tests/test_router.py --cov=router_osmnx --cov-report=html
 ```
 
 ### Test Coverage
@@ -163,11 +163,11 @@ The test suite includes:
 
 ## �� API Reference
 
-### OSMRoutingEngine Class
+### SPLRouterEngine Class
 
 #### Constructor
 ```python
-OSMRoutingEngine(osm_xml_file=None, place_name=None)
+SPLRouterEngine(osm_xml_file=None, place_name=None)
 ```
 - `osm_xml_file`: Path to OSM XML file (optional)
 - `place_name`: Name of place to download (optional)
@@ -243,7 +243,7 @@ SPL-Router
 pip install -r requirements_test.txt
 
 # Run tests
-python test_router.py
+python tests/test_router.py
 ```
 
 ## 📄 License

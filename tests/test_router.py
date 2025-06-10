@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for the OSMnx routing engine.
+Unit tests for the SPL routing engine.
 """
 
 import unittest
@@ -14,11 +14,11 @@ from typing import Tuple
 
 # Add the current directory to the path to import the router module
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from router import OSMRoutingEngine
+from router.router import SPLRouterEngine
 
 
-class TestOSMRoutingEngine(unittest.TestCase):
-    """Test cases for the OSMRoutingEngine class."""
+class TestSPLRouterEngine(unittest.TestCase):
+    """Test cases for the SPLRouterEngine class."""
 
     def setUp(self):
         """Set up test fixtures."""
@@ -51,7 +51,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
                 with patch('osmnx.add_edge_travel_times') as mock_add_times:
                     mock_add_times.return_value = self.mock_graph
                     
-                    router = OSMRoutingEngine(place_name="Test City")
+                    router = SPLRouterEngine(place_name="Test City")
                     
                     self.assertIsNotNone(router.graph)
                     self.assertEqual(router.place_name, "Test City")
@@ -60,11 +60,11 @@ class TestOSMRoutingEngine(unittest.TestCase):
     def test_init_with_no_parameters(self):
         """Test initialization with no parameters."""
         with self.assertRaises(ValueError):
-            OSMRoutingEngine()
+            SPLRouterEngine()
 
     def test_validate_coordinates_valid(self):
         """Test coordinate validation with valid coordinates."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Test valid coordinates
@@ -75,7 +75,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_validate_coordinates_invalid(self):
         """Test coordinate validation with invalid coordinates."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Test invalid coordinates
@@ -86,7 +86,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_haversine_distance(self):
         """Test haversine distance calculation."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Test distance calculation
@@ -96,7 +96,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_shortest_path_success(self):
         """Test successful shortest path calculation."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Mock the nearest_nodes function
@@ -111,7 +111,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_shortest_path_same_start_end(self):
         """Test shortest path with same start and end points."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         with patch('osmnx.distance.nearest_nodes') as mock_nearest:
@@ -124,7 +124,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_shortest_path_invalid_coordinates(self):
         """Test shortest path with invalid coordinates."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         with self.assertRaises(ValueError):
@@ -135,7 +135,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_shortest_path_no_graph(self):
         """Test shortest path with no graph loaded."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = None
         
         with self.assertRaises(RuntimeError):
@@ -143,7 +143,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_shortest_path_empty_graph(self):
         """Test shortest path with empty graph."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = nx.MultiDiGraph()  # Empty graph
         
         with self.assertRaises(RuntimeError):
@@ -151,7 +151,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_get_graph_info(self):
         """Test graph info retrieval."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         info = router.get_graph_info()
@@ -166,7 +166,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
 
     def test_get_graph_info_no_graph(self):
         """Test graph info retrieval with no graph."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = None
         
         info = router.get_graph_info()
@@ -175,7 +175,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
     @patch('matplotlib.pyplot')
     def test_visualize_route(self, mock_plt):
         """Test route visualization."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         with patch('osmnx.distance.nearest_nodes') as mock_nearest:
@@ -198,7 +198,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
     @patch('folium.Map')
     def test_visualize_route_interactive(self, mock_folium_map):
         """Test interactive route visualization."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         with patch('osmnx.distance.nearest_nodes') as mock_nearest:
@@ -216,7 +216,7 @@ class TestOSMRoutingEngine(unittest.TestCase):
     @patch('matplotlib.pyplot')
     def test_plot_route_stats(self, mock_plt):
         """Test route statistics plotting."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         with patch('osmnx.distance.nearest_nodes') as mock_nearest:
@@ -233,11 +233,11 @@ class TestOSMRoutingEngine(unittest.TestCase):
             mock_graph_from_place.side_effect = Exception("Network error")
             
             with self.assertRaises(RuntimeError):
-                OSMRoutingEngine(place_name="Invalid Place")
+                SPLRouterEngine(place_name="Invalid Place")
 
     def test_edge_case_coordinates(self):
         """Test edge case coordinates."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Test boundary coordinates
@@ -252,8 +252,8 @@ class TestOSMRoutingEngine(unittest.TestCase):
         self.assertFalse(router.validate_coordinates(0.0, -90.1))
 
 
-class TestOSMRoutingEngineIntegration(unittest.TestCase):
-    """Integration tests for the OSMRoutingEngine class."""
+class TestSPLRouterEngineIntegration(unittest.TestCase):
+    """Integration tests for the SPLRouterEngine class."""
 
     def setUp(self):
         """Set up mock graph for integration tests."""
@@ -268,7 +268,7 @@ class TestOSMRoutingEngineIntegration(unittest.TestCase):
     @unittest.skip("Skip integration test - requires internet connection")
     def test_real_place_routing(self):
         """Test routing with a real place (requires internet)."""
-        router = OSMRoutingEngine(place_name="San Francisco, California")
+        router = SPLRouterEngine(place_name="San Francisco, California")
         
         start_point = (-122.4194, 37.7749)
         end_point = (-122.4313, 37.8051)
@@ -282,7 +282,7 @@ class TestOSMRoutingEngineIntegration(unittest.TestCase):
 
     def test_coordinate_validation_comprehensive(self):
         """Comprehensive test of coordinate validation."""
-        router = OSMRoutingEngine(place_name="Test")
+        router = SPLRouterEngine(place_name="Test")
         router.graph = self.mock_graph
         
         # Test various coordinate combinations
@@ -313,8 +313,8 @@ def run_tests():
     test_suite = unittest.TestSuite()
     
     # Add test cases
-    test_suite.addTest(unittest.makeSuite(TestOSMRoutingEngine))
-    test_suite.addTest(unittest.makeSuite(TestOSMRoutingEngineIntegration))
+    test_suite.addTest(unittest.makeSuite(TestSPLRouterEngine))
+    test_suite.addTest(unittest.makeSuite(TestSPLRouterEngineIntegration))
     
     # Run tests
     runner = unittest.TextTestRunner(verbosity=2)

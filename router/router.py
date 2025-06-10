@@ -6,7 +6,7 @@ import time
 from typing import List, Tuple, Optional
 from pathlib import Path
 
-class OSMRoutingEngine:
+class SPLRouterEngine:
     def __init__(self, osm_xml_file: Optional[str] = None, place_name: Optional[str] = None):
         """
         Initialize routing engine with either OSM XML file or place name.
