@@ -16,7 +16,6 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 For full documentation, visit [https://mouhamedtec.github.io/SPL-Router](https://mouhamedtec.github.io/SPL-Router)
 
 
-
 ## 📋 Requirements
 
 ### Core Dependencies
