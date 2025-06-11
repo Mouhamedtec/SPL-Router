@@ -12,6 +12,10 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 - **Graph Projection**: Automatic handling of coordinate reference systems
 - **Comprehensive Testing**: Full test suite with unit and integration tests
 
+## Documentation
+For full documentation, visit [https://mouhamedtec.github.io/SPL-Router](https://mouhamedtec.github.io/SPL-Router)
+
+
 ## 📋 Requirements
 
 ### Core Dependencies

@@ -1,0 +1,17 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: SPL-Router
+description: A robust routing engine for OpenStreetMap data
+show_downloads: true
+
+navbar:
+  - title: Home
+    url: /
+  - title: Documentation
+    url: /docs
+  - title: API Reference
+    url: /api
+  - title: Examples
+    url: /examples
