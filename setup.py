@@ -1,8 +1,15 @@
 from setuptools import setup, find_packages
 
+try:
+    __version__ = open("router/version.py").read().split('"')[1]
+except ImportError:
+    __version__ = ""
+
+__author__ = "Hassani Mohammed"
+
 setup(
     name="spl-router",
-    version="0.1.0",
+    version=__version__ ,
     description="A routing engine built on OSMnx for OpenStreetMap data processing and route calculation.",
     author="Mouhamedtec",
     fullname="Hassani Mohammed",
