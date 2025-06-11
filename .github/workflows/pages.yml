@@ -6,9 +6,17 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - uses: actions/checkout@v4
     
@@ -27,7 +35,13 @@ jobs:
       run: |
         pdoc --html router -o docs/api
     
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
     - name: Deploy to GitHub Pages
+      id: deployment
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: docs
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
