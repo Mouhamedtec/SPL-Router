@@ -2,9 +2,13 @@ import osmnx as ox
 import networkx as nx
 import pandas as pd
 import os
+import requests
 import time
-from typing import List, Tuple, Optional
+from typing import List, Tuple, Optional, Dict, Any
 from pathlib import Path
+from router.constants import NOMINATIM_DEFAULT_URL, PHOTON_DEFAULT_URL
+from router.version import version
+
 
 class SPLRouterEngine:
     def __init__(self, osm_xml_file: Optional[str] = None, place_name: Optional[str] = None):
@@ -442,3 +446,92 @@ Route Statistics:
             print("Matplotlib and NumPy are required for statistics plotting. Install with: pip install matplotlib numpy")
         except Exception as e:
             print(f"Error plotting route statistics: {str(e)}")
+
+    def reverse_geocode_nominatim(self, lon: float, lat: float, 
+                                server_url: str = None) -> Dict[str, Any]:
+        """
+        Get address information using Nominatim.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            server_url: Custom Nominatim server URL (optional)
+            
+        Returns:
+            Dictionary containing address information
+        """
+        try:
+            base_url = server_url or NOMINATIM_DEFAULT_URL
+            url = f"{base_url}/reverse?lat={lat}&lon={lon}&format=json"
+            headers = {'User-Agent': f"SPLRouter/{version}"}
+            
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            
+            return response.json()
+        except Exception as e:
+            return {"error": f"Nominatim geocoding failed: {str(e)}"}
+
+    def reverse_geocode_photon(self, lon: float, lat: float, 
+                             server_url: str = None) -> Dict[str, Any]:
+        """
+        Get address information using Photon.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            server_url: Custom Photon server URL (optional)
+            
+        Returns:
+            Dictionary containing address information
+        """
+        try:
+            base_url = server_url or PHOTON_DEFAULT_URL
+            url = f"{base_url}/reverse?lon={lon}&lat={lat}"
+            response = requests.get(url)
+            response.raise_for_status()
+            
+            return response.json()
+        except Exception as e:
+            return {"error": f"Photon geocoding failed: {str(e)}"}
+
+    def reverse_geocode_multiple(self, lon: float, lat: float, 
+                               nominatim_url: str = None,
+                               photon_url: str = None) -> Dict[str, Any]:
+        """
+        Get address information from multiple services and combine results.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            nominatim_url: Custom Nominatim server URL (optional)
+            photon_url: Custom Photon server URL (optional)
+            
+        Returns:
+            Dictionary containing combined address information
+        """
+        results = {
+            "nominatim": None,
+            "photon": None,
+            "osm_nodes": None,
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+        }
+
+        # Get Nominatim results with custom URL
+        nominatim_result = self.reverse_geocode_nominatim(lon, lat, nominatim_url)
+        if "error" not in nominatim_result:
+            results["nominatim"] = nominatim_result
+
+        # Get Photon results with custom URL
+        photon_result = self.reverse_geocode_photon(lon, lat, photon_url)
+        if "error" not in photon_result:
+            results["photon"] = photon_result
+
+        # Get nearest OSM node information
+        try:
+            nearest_node = ox.distance.nearest_nodes(self.graph, lon, lat)
+            results["osm_nodes"] = self.graph.nodes[nearest_node]
+        except Exception as e:
+            results["osm_nodes"] = {"error": str(e)}
+
+        return results

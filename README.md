@@ -19,6 +19,7 @@ A robust and feature-rich routing engine built on top of OSMnx for OpenStreetMap
 - OSMnx >= 1.3.0
 - NetworkX >= 2.8.0
 - Pandas >= 1.5.0
+- Requests >= 2.32.3
 
 ### Visualization Dependencies
 - Matplotlib >= 3.5.0
@@ -135,6 +136,45 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Reverse Geocoding
+### Get address information
+
+```python
+# Using default Nominatim server
+address = router.reverse_geocode_nominatim(-122.4194, 37.7749)
+print(f"Address: {address}")
+
+# Using custom server
+custom_server = "https://your-nominatim-server.com"
+address = router.reverse_geocode_nominatim(-122.4194, 37.7749, server_url=custom_server)
+
+# Get data from multiple services
+results = router.reverse_geocode_multiple(-122.4194, 37.7749)
+print(f"Nominatim: {results['nominatim']}")
+print(f"Photon: {results['photon']}")
+```
+
+
+##### `reverse_geocode_nominatim(lon, lat, server_url=None)`
+Get address information using Nominatim.
+- `lon`: Longitude coordinate
+- `lat`: Latitude coordinate
+- `server_url`: Optional custom Nominatim server URL
+- Returns: Dictionary containing address information
+
+##### `reverse_geocode_photon(lon, lat, server_url=None)`
+Get address information using Photon.
+- `lon`: Longitude coordinate
+- `lat`: Latitude coordinate
+- `server_url`: Optional custom Photon server URL
+- Returns: Dictionary containing address information
+
+##### `reverse_geocode_multiple(lon, lat, nominatim_url=None, photon_url=None)`
+Get address information from multiple services.
+- Returns: Combined results from all available services
+
+
 
 ## 🧪 Testing
 
