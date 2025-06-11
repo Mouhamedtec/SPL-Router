@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>router.router API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>router.router</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="router.router.SPLRouterEngine"><code class="flex name class">
+<span>class <span class="ident">SPLRouterEngine</span></span>
+<span>(</span><span>osm_xml_file: str | None = None, place_name: str | None = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SPLRouterEngine:
+    def __init__(self, osm_xml_file: Optional[str] = None, place_name: Optional[str] = None):
+        &#34;&#34;&#34;
+        Initialize routing engine with either OSM XML file or place name.
+        
+        Args:
+            osm_xml_file: Path to OSM XML file (optional)
+            place_name: Name of place to download (optional)
+        &#34;&#34;&#34;
+        self.graph = None
+
+        # Validate input parameters
+        if not osm_xml_file and not place_name:
+            raise ValueError(&#34;Must provide either OSM XML file or place name&#34;)
+        
+        if osm_xml_file and not os.path.exists(osm_xml_file):
+            raise FileNotFoundError(f&#34;OSM XML file not found: {osm_xml_file}&#34;)
+
+        self.osm_xml_file = osm_xml_file
+        self.place_name = place_name
+            
+        self.load_graph()
+    
+    def load_graph(self):
+        &#34;&#34;&#34;Load the graph from OSM XML file or OSM download.&#34;&#34;&#34;
+        print(&#34;Loading graph...&#34;)
+        start_time = time.time()
+        
+        try:
+            if self.osm_xml_file:
+                # Load from OSM XML file
+                ox.settings.useful_tags_way = ox.settings.useful_tags_way + [&#39;oneway&#39;]
+                self.graph = ox.graph_from_xml(self.osm_xml_file)
+            elif self.place_name:
+                # Download graph from place name
+                self.graph = ox.graph_from_place(self.place_name, network_type=&#39;drive&#39;)
+            else:
+                raise ValueError(&#34;Must provide either OSM XML file or place name&#34;)
+            
+            # Ensure graph is properly loaded and has data
+            if self.graph is None or len(self.graph.nodes()) == 0:
+                raise ValueError(&#34;Failed to load graph or graph is empty&#34;)
+            
+            # Add edge speeds and travel times
+            try:
+                self.graph = ox.add_edge_speeds(self.graph)
+                self.graph = ox.add_edge_travel_times(self.graph)
+            except Exception as e:
+                print(f&#34;Warning: Could not add edge speeds/times: {e}&#34;)
+            
+            # Handle projection more carefully
+            try:
+                # Check if graph is already projected
+                if not ox.projection.is_projected(self.graph):
+                    print(&#34;Projecting graph to UTM coordinate system...&#34;)
+                    # Project to UTM zone based on graph center
+                    self.graph = ox.projection.project_graph(self.graph, to_crs=&#39;EPSG:3857&#39;)
+            except Exception as e:
+                print(f&#34;Warning: Could not project graph: {e}&#34;)
+                print(&#34;Continuing with unprojected graph...&#34;)
+                
+        except Exception as e:
+            raise RuntimeError(f&#34;Failed to load graph: {str(e)}&#34;)
+        
+        print(f&#34;Graph loaded in {time.time() - start_time:.2f} seconds&#34;)
+        print(f&#34;Nodes: {len(self.graph.nodes())}&#34;)
+        print(f&#34;Edges: {len(self.graph.edges())}&#34;)
+        
+        # Print graph CRS info
+        try:
+            crs = self.graph.graph.get(&#39;crs&#39;, &#39;Unknown&#39;)
+            print(f&#34;Graph CRS: {crs}&#34;)
+        except:
+            print(&#34;Could not determine graph CRS&#34;)
+    
+    def validate_coordinates(self, lon: float, lat: float) -&gt; bool:
+        &#34;&#34;&#34;Validate coordinate values.&#34;&#34;&#34;
+        return -180 &lt;= lon &lt;= 180 and -90 &lt;= lat &lt;= 90
+    
+    def haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -&gt; float:
+        &#34;&#34;&#34;Calculate haversine distance between two points in meters.&#34;&#34;&#34;
+        import math
+        
+        # Convert to radians
+        lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+        
+        # Haversine formula
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
+        r = 6371000  # Earth radius in meters
+        return c * r
+
+    def shortest_path(self, start_point: Tuple[float, float], 
+                    end_point: Tuple[float, float]) -&gt; Tuple[List[Tuple[float, float]], float]:
+        &#34;&#34;&#34;
+        Find shortest path between two points.
+        
+        Args:
+            start_point: (lon, lat) tuple
+            end_point: (lon, lat) tuple
+            
+        Returns:
+            Tuple of (path_coordinates, distance_in_meters)
+        &#34;&#34;&#34;
+        # Validate input coordinates
+        start_lon, start_lat = start_point
+        end_lon, end_lat = end_point
+        
+        if not self.validate_coordinates(start_lon, start_lat):
+            raise ValueError(&#34;Invalid start coordinates: longitude must be between -180 and 180, latitude between -90 and 90&#34;)
+        
+        if not self.validate_coordinates(end_lon, end_lat):
+            raise ValueError(&#34;Invalid end coordinates: longitude must be between -180 and 180, latitude between -90 and 90&#34;)
+        
+        # Check if graph is loaded
+        if self.graph is None or len(self.graph.nodes()) == 0:
+            raise RuntimeError(&#34;Graph is not loaded or empty&#34;)
+        
+        try:
+            # Find nearest nodes to the input points
+            start_node = ox.distance.nearest_nodes(self.graph, start_lon, start_lat)
+            end_node = ox.distance.nearest_nodes(self.graph, end_lon, end_lat)
+            
+            # Validate that we found valid nodes
+            if start_node not in self.graph.nodes():
+                raise ValueError(f&#34;Start node {start_node} not found in graph&#34;)
+            if end_node not in self.graph.nodes():
+                raise ValueError(f&#34;End node {end_node} not found in graph&#34;)
+            
+            # Handle case where start and end are the same
+            if start_node == end_node:
+                node_data = self.graph.nodes[start_node]
+                return [(node_data.get(&#39;x&#39;, start_lon), node_data.get(&#39;y&#39;, start_lat))], 0.0
+            
+            # Check if graph is projected for accurate distance calculations
+            is_projected = False
+            try:
+                is_projected = ox.projection.is_projected(self.graph)
+            except:
+                pass
+            
+            # Calculate shortest path
+            if is_projected:
+                # Use length attribute for projected graphs
+                route = nx.shortest_path(
+                    self.graph, 
+                    start_node, 
+                    end_node, 
+                    weight=&#39;length&#39;
+                )
+            else:
+                # Use haversine distance for unprojected graphs
+                def haversine_weight(u, v, d):
+                    u_data = self.graph.nodes[u]
+                    v_data = self.graph.nodes[v]
+                    return self.haversine_distance(
+                        u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                        v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                    )
+                
+                route = nx.shortest_path(
+                    self.graph, 
+                    start_node, 
+                    end_node, 
+                    weight=haversine_weight
+                )
+            
+            # Get route coordinates and distance
+            route_coords = []
+            for n in route:
+                node_data = self.graph.nodes[n]
+                x = node_data.get(&#39;x&#39;, 0)
+                y = node_data.get(&#39;y&#39;, 0)
+                route_coords.append((x, y))
+            
+            # Calculate total distance
+            distance = 0.0
+            for i in range(len(route) - 1):
+                u, v = route[i], route[i + 1]
+                if self.graph.has_edge(u, v):
+                    if is_projected:
+                        edge_data = self.graph[u][v]
+                        distance += edge_data.get(&#39;length&#39;, 0.0)
+                    else:
+                        # Use haversine distance for unprojected graphs
+                        u_data = self.graph.nodes[u]
+                        v_data = self.graph.nodes[v]
+                        distance += self.haversine_distance(
+                            u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                            v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                        )
+            
+            return route_coords, distance
+            
+        except nx.NetworkXNoPath:
+            raise ValueError(&#34;No path found between the specified points&#34;)
+        except Exception as e:
+            raise RuntimeError(f&#34;Error calculating shortest path: {str(e)}&#34;)
+    
+    def get_graph_info(self) -&gt; dict:
+        &#34;&#34;&#34;Get information about the loaded graph.&#34;&#34;&#34;
+        if self.graph is None:
+            return {&#34;error&#34;: &#34;Graph not loaded&#34;}
+        
+        info = {
+            &#34;nodes&#34;: len(self.graph.nodes()),
+            &#34;edges&#34;: len(self.graph.edges()),
+        }
+        
+        # Safely check projection status
+        try:
+            info[&#34;is_projected&#34;] = ox.projection.is_projected(self.graph)
+        except:
+            info[&#34;is_projected&#34;] = &#34;Unknown&#34;
+        
+        # Safely get CRS info
+        try:
+            info[&#34;crs&#34;] = self.graph.graph.get(&#39;crs&#39;, &#39;Unknown&#39;)
+        except:
+            info[&#34;crs&#34;] = &#34;Unknown&#34;
+        
+        return info
+
+    def visualize_route(self, start_point: Tuple[float, float], 
+                       end_point: Tuple[float, float], 
+                       save_path: Optional[str] = None) -&gt; None:
+        &#34;&#34;&#34;
+        Visualize the route between two points.
+        
+        Args:
+            start_point: (lon, lat) tuple for start
+            end_point: (lon, lat) tuple for end
+            save_path: Optional path to save the plot as image
+        &#34;&#34;&#34;
+        try:
+            import matplotlib.pyplot as plt
+            
+            # Get the route
+            route_coords, distance = self.shortest_path(start_point, end_point)
+            
+            # Extract node IDs for the route
+            start_lon, start_lat = start_point
+            end_lon, end_lat = end_point
+            
+            start_node = ox.distance.nearest_nodes(self.graph, start_lon, start_lat)
+            end_node = ox.distance.nearest_nodes(self.graph, end_lon, end_lat)
+            
+            # Get the route as node IDs
+            is_projected = False
+            try:
+                is_projected = ox.projection.is_projected(self.graph)
+            except:
+                pass
+            
+            if is_projected:
+                route_nodes = nx.shortest_path(self.graph, start_node, end_node, weight=&#39;length&#39;)
+            else:
+                def haversine_weight(u, v, d):
+                    u_data = self.graph.nodes[u]
+                    v_data = self.graph.nodes[v]
+                    return self.haversine_distance(
+                        u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                        v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                    )
+                route_nodes = nx.shortest_path(self.graph, start_node, end_node, weight=haversine_weight)
+            
+            # Create the plot
+            fig, ax = plt.subplots(figsize=(12, 8))
+            
+            # Plot the route
+            ox.plot_graph_route(self.graph, route_nodes, ax=ax, 
+                              route_color=&#39;red&#39;, route_linewidth=3, 
+                              route_alpha=0.8, show=False)
+            
+            # Add start and end markers
+            ax.scatter(start_lon, start_lat, c=&#39;green&#39;, s=100, marker=&#39;o&#39;, 
+                      label=&#39;Start&#39;, zorder=5, edgecolors=&#39;black&#39;, linewidth=2)
+            ax.scatter(end_lon, end_lat, c=&#39;red&#39;, s=100, marker=&#39;s&#39;, 
+                      label=&#39;End&#39;, zorder=5, edgecolors=&#39;black&#39;, linewidth=2)
+            
+            # Add title and legend
+            ax.set_title(f&#39;Route from {start_point} to {end_point}\nDistance: {distance:.2f} meters&#39;)
+            ax.legend()
+            
+            # Save if requested
+            if save_path:
+                plt.savefig(save_path, dpi=300, bbox_inches=&#39;tight&#39;)
+                print(f&#34;Route visualization saved to: {save_path}&#34;)
+            
+            plt.show()
+            
+        except ImportError:
+            print(&#34;Matplotlib is required for visualization. Install with: pip install matplotlib&#34;)
+        except Exception as e:
+            print(f&#34;Error visualizing route: {str(e)}&#34;)
+
+    def visualize_route_interactive(self, start_point: Tuple[float, float], 
+                                  end_point: Tuple[float, float]) -&gt; None:
+        &#34;&#34;&#34;
+        Create an interactive visualization using folium.
+        
+        Args:
+            start_point: (lon, lat) tuple for start
+            end_point: (lon, lat) tuple for end
+        &#34;&#34;&#34;
+        try:
+            import folium
+            
+            # Get the route
+            route_coords, distance = self.shortest_path(start_point, end_point)
+            
+            # Calculate center point for the map
+            center_lat = (start_point[1] + end_point[1]) / 2
+            center_lon = (start_point[0] + end_point[0]) / 2
+            
+            # Create the map
+            m = folium.Map(location=[center_lat, center_lon], 
+                          zoom_start=13, 
+                          tiles=&#39;OpenStreetMap&#39;)
+            
+            # Add start marker
+            folium.Marker(
+                location=[start_point[1], start_point[0]],
+                popup=f&#39;Start&lt;br&gt;Distance: {distance:.2f}m&#39;,
+                icon=folium.Icon(color=&#39;green&#39;, icon=&#39;info-sign&#39;)
+            ).add_to(m)
+            
+            # Add end marker
+            folium.Marker(
+                location=[end_point[1], end_point[0]],
+                popup=f&#39;End&lt;br&gt;Distance: {distance:.2f}m&#39;,
+                icon=folium.Icon(color=&#39;red&#39;, icon=&#39;info-sign&#39;)
+            ).add_to(m)
+            
+            # Add route line
+            route_locations = [[coord[1], coord[0]] for coord in route_coords]
+            folium.PolyLine(
+                locations=route_locations,
+                color=&#39;red&#39;,
+                weight=4,
+                opacity=0.8,
+                popup=f&#39;Route&lt;br&gt;Distance: {distance:.2f}m&#39;
+            ).add_to(m)
+            
+            # Save the map
+            map_path = &#39;route_visualization.html&#39;
+            m.save(map_path)
+            print(f&#34;Interactive route visualization saved to: {map_path}&#34;)
+            print(&#34;Open the HTML file in your web browser to view the interactive map.&#34;)
+            
+        except ImportError:
+            print(&#34;Folium is required for interactive visualization. Install with: pip install folium&#34;)
+        except Exception as e:
+            print(f&#34;Error creating interactive visualization: {str(e)}&#34;)
+
+    def plot_route_stats(self, start_point: Tuple[float, float], 
+                        end_point: Tuple[float, float]) -&gt; None:
+        &#34;&#34;&#34;
+        Plot route statistics and analysis.
+        
+        Args:
+            start_point: (lon, lat) tuple for start
+            end_point: (lon, lat) tuple for end
+        &#34;&#34;&#34;
+        try:
+            import matplotlib.pyplot as plt
+            import numpy as np
+            
+            # Get the route
+            route_coords, distance = self.shortest_path(start_point, end_point)
+            
+            # Calculate additional statistics
+            distances = []
+            for i in range(len(route_coords) - 1):
+                dist = self.haversine_distance(
+                    route_coords[i][1], route_coords[i][0],
+                    route_coords[i+1][1], route_coords[i+1][0]
+                )
+                distances.append(dist)
+            
+            # Create subplots
+            fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+            
+            # Plot 1: Route overview
+            ax1.plot([coord[0] for coord in route_coords], 
+                    [coord[1] for coord in route_coords], 
+                    &#39;r-&#39;, linewidth=2, label=&#39;Route&#39;)
+            ax1.scatter(start_point[0], start_point[1], c=&#39;green&#39;, s=100, 
+                       marker=&#39;o&#39;, label=&#39;Start&#39;, zorder=5)
+            ax1.scatter(end_point[0], end_point[1], c=&#39;red&#39;, s=100, 
+                       marker=&#39;s&#39;, label=&#39;End&#39;, zorder=5)
+            ax1.set_title(&#39;Route Overview&#39;)
+            ax1.legend()
+            ax1.set_xlabel(&#39;Longitude&#39;)
+            ax1.set_ylabel(&#39;Latitude&#39;)
+            
+            # Plot 2: Distance histogram
+            if distances:
+                ax2.hist(distances, bins=20, alpha=0.7, color=&#39;skyblue&#39;, edgecolor=&#39;black&#39;)
+                ax2.set_title(&#39;Segment Distance Distribution&#39;)
+                ax2.set_xlabel(&#39;Distance (meters)&#39;)
+                ax2.set_ylabel(&#39;Frequency&#39;)
+            
+            # Plot 3: Cumulative distance
+            cumulative_dist = np.cumsum([0] + distances)
+            ax3.plot(range(len(cumulative_dist)), cumulative_dist, &#39;b-&#39;, linewidth=2)
+            ax3.set_title(&#39;Cumulative Distance&#39;)
+            ax3.set_xlabel(&#39;Route Segment&#39;)
+            ax3.set_ylabel(&#39;Cumulative Distance (meters)&#39;)
+            ax3.grid(True, alpha=0.3)
+            
+            # Plot 4: Route statistics
+            ax4.axis(&#39;off&#39;)
+            stats_text = f&#34;&#34;&#34;
+Route Statistics:
+• Total Distance: {distance:.2f} meters
+• Number of Segments: {len(route_coords) - 1}
+• Average Segment Length: {np.mean(distances):.2f} meters
+• Max Segment Length: {np.max(distances):.2f} meters
+• Min Segment Length: {np.min(distances):.2f} meters
+• Start: {start_point}
+• End: {end_point}
+            &#34;&#34;&#34;
+            ax4.text(0.1, 0.9, stats_text, transform=ax4.transAxes, 
+                    fontsize=12, verticalalignment=&#39;top&#39;,
+                    bbox=dict(boxstyle=&#39;round&#39;, facecolor=&#39;lightblue&#39;, alpha=0.5))
+            
+            plt.tight_layout()
+            plt.show()
+            
+        except ImportError:
+            print(&#34;Matplotlib and NumPy are required for statistics plotting. Install with: pip install matplotlib numpy&#34;)
+        except Exception as e:
+            print(f&#34;Error plotting route statistics: {str(e)}&#34;)
+
+    def reverse_geocode_nominatim(self, lon: float, lat: float, 
+                                server_url: str = None) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;
+        Get address information using Nominatim.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            server_url: Custom Nominatim server URL (optional)
+            
+        Returns:
+            Dictionary containing address information
+        &#34;&#34;&#34;
+        try:
+            base_url = server_url or NOMINATIM_DEFAULT_URL
+            url = f&#34;{base_url}/reverse?lat={lat}&amp;lon={lon}&amp;format=json&#34;
+            headers = {&#39;User-Agent&#39;: f&#34;SPLRouter/{version}&#34;}
+            
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            
+            return response.json()
+        except Exception as e:
+            return {&#34;error&#34;: f&#34;Nominatim geocoding failed: {str(e)}&#34;}
+
+    def reverse_geocode_photon(self, lon: float, lat: float, 
+                             server_url: str = None) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;
+        Get address information using Photon.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            server_url: Custom Photon server URL (optional)
+            
+        Returns:
+            Dictionary containing address information
+        &#34;&#34;&#34;
+        try:
+            base_url = server_url or PHOTON_DEFAULT_URL
+            url = f&#34;{base_url}/reverse?lon={lon}&amp;lat={lat}&#34;
+            response = requests.get(url)
+            response.raise_for_status()
+            
+            return response.json()
+        except Exception as e:
+            return {&#34;error&#34;: f&#34;Photon geocoding failed: {str(e)}&#34;}
+
+    def reverse_geocode_multiple(self, lon: float, lat: float, 
+                               nominatim_url: str = None,
+                               photon_url: str = None) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;
+        Get address information from multiple services and combine results.
+        
+        Args:
+            lon: Longitude
+            lat: Latitude
+            nominatim_url: Custom Nominatim server URL (optional)
+            photon_url: Custom Photon server URL (optional)
+            
+        Returns:
+            Dictionary containing combined address information
+        &#34;&#34;&#34;
+        results = {
+            &#34;nominatim&#34;: None,
+            &#34;photon&#34;: None,
+            &#34;osm_nodes&#34;: None,
+            &#34;timestamp&#34;: time.strftime(&#34;%Y-%m-%d %H:%M:%S&#34;)
+        }
+
+        # Get Nominatim results with custom URL
+        nominatim_result = self.reverse_geocode_nominatim(lon, lat, nominatim_url)
+        if &#34;error&#34; not in nominatim_result:
+            results[&#34;nominatim&#34;] = nominatim_result
+
+        # Get Photon results with custom URL
+        photon_result = self.reverse_geocode_photon(lon, lat, photon_url)
+        if &#34;error&#34; not in photon_result:
+            results[&#34;photon&#34;] = photon_result
+
+        # Get nearest OSM node information
+        try:
+            nearest_node = ox.distance.nearest_nodes(self.graph, lon, lat)
+            results[&#34;osm_nodes&#34;] = self.graph.nodes[nearest_node]
+        except Exception as e:
+            results[&#34;osm_nodes&#34;] = {&#34;error&#34;: str(e)}
+
+        return results</code></pre>
+</details>
+<div class="desc"><p>Initialize routing engine with either OSM XML file or place name.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>osm_xml_file</code></strong></dt>
+<dd>Path to OSM XML file (optional)</dd>
+<dt><strong><code>place_name</code></strong></dt>
+<dd>Name of place to download (optional)</dd>
+</dl></div>
+<h3>Methods</h3>
+<dl>
+<dt id="router.router.SPLRouterEngine.get_graph_info"><code class="name flex">
+<span>def <span class="ident">get_graph_info</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_graph_info(self) -&gt; dict:
+    &#34;&#34;&#34;Get information about the loaded graph.&#34;&#34;&#34;
+    if self.graph is None:
+        return {&#34;error&#34;: &#34;Graph not loaded&#34;}
+    
+    info = {
+        &#34;nodes&#34;: len(self.graph.nodes()),
+        &#34;edges&#34;: len(self.graph.edges()),
+    }
+    
+    # Safely check projection status
+    try:
+        info[&#34;is_projected&#34;] = ox.projection.is_projected(self.graph)
+    except:
+        info[&#34;is_projected&#34;] = &#34;Unknown&#34;
+    
+    # Safely get CRS info
+    try:
+        info[&#34;crs&#34;] = self.graph.graph.get(&#39;crs&#39;, &#39;Unknown&#39;)
+    except:
+        info[&#34;crs&#34;] = &#34;Unknown&#34;
+    
+    return info</code></pre>
+</details>
+<div class="desc"><p>Get information about the loaded graph.</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.haversine_distance"><code class="name flex">
+<span>def <span class="ident">haversine_distance</span></span>(<span>self, lat1: float, lon1: float, lat2: float, lon2: float) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -&gt; float:
+    &#34;&#34;&#34;Calculate haversine distance between two points in meters.&#34;&#34;&#34;
+    import math
+    
+    # Convert to radians
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+    
+    # Haversine formula
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+    c = 2 * math.asin(math.sqrt(a))
+    r = 6371000  # Earth radius in meters
+    return c * r</code></pre>
+</details>
+<div class="desc"><p>Calculate haversine distance between two points in meters.</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.load_graph"><code class="name flex">
+<span>def <span class="ident">load_graph</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_graph(self):
+    &#34;&#34;&#34;Load the graph from OSM XML file or OSM download.&#34;&#34;&#34;
+    print(&#34;Loading graph...&#34;)
+    start_time = time.time()
+    
+    try:
+        if self.osm_xml_file:
+            # Load from OSM XML file
+            ox.settings.useful_tags_way = ox.settings.useful_tags_way + [&#39;oneway&#39;]
+            self.graph = ox.graph_from_xml(self.osm_xml_file)
+        elif self.place_name:
+            # Download graph from place name
+            self.graph = ox.graph_from_place(self.place_name, network_type=&#39;drive&#39;)
+        else:
+            raise ValueError(&#34;Must provide either OSM XML file or place name&#34;)
+        
+        # Ensure graph is properly loaded and has data
+        if self.graph is None or len(self.graph.nodes()) == 0:
+            raise ValueError(&#34;Failed to load graph or graph is empty&#34;)
+        
+        # Add edge speeds and travel times
+        try:
+            self.graph = ox.add_edge_speeds(self.graph)
+            self.graph = ox.add_edge_travel_times(self.graph)
+        except Exception as e:
+            print(f&#34;Warning: Could not add edge speeds/times: {e}&#34;)
+        
+        # Handle projection more carefully
+        try:
+            # Check if graph is already projected
+            if not ox.projection.is_projected(self.graph):
+                print(&#34;Projecting graph to UTM coordinate system...&#34;)
+                # Project to UTM zone based on graph center
+                self.graph = ox.projection.project_graph(self.graph, to_crs=&#39;EPSG:3857&#39;)
+        except Exception as e:
+            print(f&#34;Warning: Could not project graph: {e}&#34;)
+            print(&#34;Continuing with unprojected graph...&#34;)
+            
+    except Exception as e:
+        raise RuntimeError(f&#34;Failed to load graph: {str(e)}&#34;)
+    
+    print(f&#34;Graph loaded in {time.time() - start_time:.2f} seconds&#34;)
+    print(f&#34;Nodes: {len(self.graph.nodes())}&#34;)
+    print(f&#34;Edges: {len(self.graph.edges())}&#34;)
+    
+    # Print graph CRS info
+    try:
+        crs = self.graph.graph.get(&#39;crs&#39;, &#39;Unknown&#39;)
+        print(f&#34;Graph CRS: {crs}&#34;)
+    except:
+        print(&#34;Could not determine graph CRS&#34;)</code></pre>
+</details>
+<div class="desc"><p>Load the graph from OSM XML file or OSM download.</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.plot_route_stats"><code class="name flex">
+<span>def <span class="ident">plot_route_stats</span></span>(<span>self, start_point: Tuple[float, float], end_point: Tuple[float, float]) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def plot_route_stats(self, start_point: Tuple[float, float], 
+                        end_point: Tuple[float, float]) -&gt; None:
+        &#34;&#34;&#34;
+        Plot route statistics and analysis.
+        
+        Args:
+            start_point: (lon, lat) tuple for start
+            end_point: (lon, lat) tuple for end
+        &#34;&#34;&#34;
+        try:
+            import matplotlib.pyplot as plt
+            import numpy as np
+            
+            # Get the route
+            route_coords, distance = self.shortest_path(start_point, end_point)
+            
+            # Calculate additional statistics
+            distances = []
+            for i in range(len(route_coords) - 1):
+                dist = self.haversine_distance(
+                    route_coords[i][1], route_coords[i][0],
+                    route_coords[i+1][1], route_coords[i+1][0]
+                )
+                distances.append(dist)
+            
+            # Create subplots
+            fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+            
+            # Plot 1: Route overview
+            ax1.plot([coord[0] for coord in route_coords], 
+                    [coord[1] for coord in route_coords], 
+                    &#39;r-&#39;, linewidth=2, label=&#39;Route&#39;)
+            ax1.scatter(start_point[0], start_point[1], c=&#39;green&#39;, s=100, 
+                       marker=&#39;o&#39;, label=&#39;Start&#39;, zorder=5)
+            ax1.scatter(end_point[0], end_point[1], c=&#39;red&#39;, s=100, 
+                       marker=&#39;s&#39;, label=&#39;End&#39;, zorder=5)
+            ax1.set_title(&#39;Route Overview&#39;)
+            ax1.legend()
+            ax1.set_xlabel(&#39;Longitude&#39;)
+            ax1.set_ylabel(&#39;Latitude&#39;)
+            
+            # Plot 2: Distance histogram
+            if distances:
+                ax2.hist(distances, bins=20, alpha=0.7, color=&#39;skyblue&#39;, edgecolor=&#39;black&#39;)
+                ax2.set_title(&#39;Segment Distance Distribution&#39;)
+                ax2.set_xlabel(&#39;Distance (meters)&#39;)
+                ax2.set_ylabel(&#39;Frequency&#39;)
+            
+            # Plot 3: Cumulative distance
+            cumulative_dist = np.cumsum([0] + distances)
+            ax3.plot(range(len(cumulative_dist)), cumulative_dist, &#39;b-&#39;, linewidth=2)
+            ax3.set_title(&#39;Cumulative Distance&#39;)
+            ax3.set_xlabel(&#39;Route Segment&#39;)
+            ax3.set_ylabel(&#39;Cumulative Distance (meters)&#39;)
+            ax3.grid(True, alpha=0.3)
+            
+            # Plot 4: Route statistics
+            ax4.axis(&#39;off&#39;)
+            stats_text = f&#34;&#34;&#34;
+Route Statistics:
+• Total Distance: {distance:.2f} meters
+• Number of Segments: {len(route_coords) - 1}
+• Average Segment Length: {np.mean(distances):.2f} meters
+• Max Segment Length: {np.max(distances):.2f} meters
+• Min Segment Length: {np.min(distances):.2f} meters
+• Start: {start_point}
+• End: {end_point}
+            &#34;&#34;&#34;
+            ax4.text(0.1, 0.9, stats_text, transform=ax4.transAxes, 
+                    fontsize=12, verticalalignment=&#39;top&#39;,
+                    bbox=dict(boxstyle=&#39;round&#39;, facecolor=&#39;lightblue&#39;, alpha=0.5))
+            
+            plt.tight_layout()
+            plt.show()
+            
+        except ImportError:
+            print(&#34;Matplotlib and NumPy are required for statistics plotting. Install with: pip install matplotlib numpy&#34;)
+        except Exception as e:
+            print(f&#34;Error plotting route statistics: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Plot route statistics and analysis.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_point</code></strong></dt>
+<dd>(lon, lat) tuple for start</dd>
+<dt><strong><code>end_point</code></strong></dt>
+<dd>(lon, lat) tuple for end</dd>
+</dl></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.reverse_geocode_multiple"><code class="name flex">
+<span>def <span class="ident">reverse_geocode_multiple</span></span>(<span>self, lon: float, lat: float, nominatim_url: str = None, photon_url: str = None) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse_geocode_multiple(self, lon: float, lat: float, 
+                           nominatim_url: str = None,
+                           photon_url: str = None) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;
+    Get address information from multiple services and combine results.
+    
+    Args:
+        lon: Longitude
+        lat: Latitude
+        nominatim_url: Custom Nominatim server URL (optional)
+        photon_url: Custom Photon server URL (optional)
+        
+    Returns:
+        Dictionary containing combined address information
+    &#34;&#34;&#34;
+    results = {
+        &#34;nominatim&#34;: None,
+        &#34;photon&#34;: None,
+        &#34;osm_nodes&#34;: None,
+        &#34;timestamp&#34;: time.strftime(&#34;%Y-%m-%d %H:%M:%S&#34;)
+    }
+
+    # Get Nominatim results with custom URL
+    nominatim_result = self.reverse_geocode_nominatim(lon, lat, nominatim_url)
+    if &#34;error&#34; not in nominatim_result:
+        results[&#34;nominatim&#34;] = nominatim_result
+
+    # Get Photon results with custom URL
+    photon_result = self.reverse_geocode_photon(lon, lat, photon_url)
+    if &#34;error&#34; not in photon_result:
+        results[&#34;photon&#34;] = photon_result
+
+    # Get nearest OSM node information
+    try:
+        nearest_node = ox.distance.nearest_nodes(self.graph, lon, lat)
+        results[&#34;osm_nodes&#34;] = self.graph.nodes[nearest_node]
+    except Exception as e:
+        results[&#34;osm_nodes&#34;] = {&#34;error&#34;: str(e)}
+
+    return results</code></pre>
+</details>
+<div class="desc"><p>Get address information from multiple services and combine results.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lon</code></strong></dt>
+<dd>Longitude</dd>
+<dt><strong><code>lat</code></strong></dt>
+<dd>Latitude</dd>
+<dt><strong><code>nominatim_url</code></strong></dt>
+<dd>Custom Nominatim server URL (optional)</dd>
+<dt><strong><code>photon_url</code></strong></dt>
+<dd>Custom Photon server URL (optional)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Dictionary containing combined address information</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.reverse_geocode_nominatim"><code class="name flex">
+<span>def <span class="ident">reverse_geocode_nominatim</span></span>(<span>self, lon: float, lat: float, server_url: str = None) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse_geocode_nominatim(self, lon: float, lat: float, 
+                            server_url: str = None) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;
+    Get address information using Nominatim.
+    
+    Args:
+        lon: Longitude
+        lat: Latitude
+        server_url: Custom Nominatim server URL (optional)
+        
+    Returns:
+        Dictionary containing address information
+    &#34;&#34;&#34;
+    try:
+        base_url = server_url or NOMINATIM_DEFAULT_URL
+        url = f&#34;{base_url}/reverse?lat={lat}&amp;lon={lon}&amp;format=json&#34;
+        headers = {&#39;User-Agent&#39;: f&#34;SPLRouter/{version}&#34;}
+        
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        
+        return response.json()
+    except Exception as e:
+        return {&#34;error&#34;: f&#34;Nominatim geocoding failed: {str(e)}&#34;}</code></pre>
+</details>
+<div class="desc"><p>Get address information using Nominatim.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lon</code></strong></dt>
+<dd>Longitude</dd>
+<dt><strong><code>lat</code></strong></dt>
+<dd>Latitude</dd>
+<dt><strong><code>server_url</code></strong></dt>
+<dd>Custom Nominatim server URL (optional)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Dictionary containing address information</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.reverse_geocode_photon"><code class="name flex">
+<span>def <span class="ident">reverse_geocode_photon</span></span>(<span>self, lon: float, lat: float, server_url: str = None) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse_geocode_photon(self, lon: float, lat: float, 
+                         server_url: str = None) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;
+    Get address information using Photon.
+    
+    Args:
+        lon: Longitude
+        lat: Latitude
+        server_url: Custom Photon server URL (optional)
+        
+    Returns:
+        Dictionary containing address information
+    &#34;&#34;&#34;
+    try:
+        base_url = server_url or PHOTON_DEFAULT_URL
+        url = f&#34;{base_url}/reverse?lon={lon}&amp;lat={lat}&#34;
+        response = requests.get(url)
+        response.raise_for_status()
+        
+        return response.json()
+    except Exception as e:
+        return {&#34;error&#34;: f&#34;Photon geocoding failed: {str(e)}&#34;}</code></pre>
+</details>
+<div class="desc"><p>Get address information using Photon.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lon</code></strong></dt>
+<dd>Longitude</dd>
+<dt><strong><code>lat</code></strong></dt>
+<dd>Latitude</dd>
+<dt><strong><code>server_url</code></strong></dt>
+<dd>Custom Photon server URL (optional)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Dictionary containing address information</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.shortest_path"><code class="name flex">
+<span>def <span class="ident">shortest_path</span></span>(<span>self, start_point: Tuple[float, float], end_point: Tuple[float, float]) ‑> Tuple[List[Tuple[float, float]], float]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shortest_path(self, start_point: Tuple[float, float], 
+                end_point: Tuple[float, float]) -&gt; Tuple[List[Tuple[float, float]], float]:
+    &#34;&#34;&#34;
+    Find shortest path between two points.
+    
+    Args:
+        start_point: (lon, lat) tuple
+        end_point: (lon, lat) tuple
+        
+    Returns:
+        Tuple of (path_coordinates, distance_in_meters)
+    &#34;&#34;&#34;
+    # Validate input coordinates
+    start_lon, start_lat = start_point
+    end_lon, end_lat = end_point
+    
+    if not self.validate_coordinates(start_lon, start_lat):
+        raise ValueError(&#34;Invalid start coordinates: longitude must be between -180 and 180, latitude between -90 and 90&#34;)
+    
+    if not self.validate_coordinates(end_lon, end_lat):
+        raise ValueError(&#34;Invalid end coordinates: longitude must be between -180 and 180, latitude between -90 and 90&#34;)
+    
+    # Check if graph is loaded
+    if self.graph is None or len(self.graph.nodes()) == 0:
+        raise RuntimeError(&#34;Graph is not loaded or empty&#34;)
+    
+    try:
+        # Find nearest nodes to the input points
+        start_node = ox.distance.nearest_nodes(self.graph, start_lon, start_lat)
+        end_node = ox.distance.nearest_nodes(self.graph, end_lon, end_lat)
+        
+        # Validate that we found valid nodes
+        if start_node not in self.graph.nodes():
+            raise ValueError(f&#34;Start node {start_node} not found in graph&#34;)
+        if end_node not in self.graph.nodes():
+            raise ValueError(f&#34;End node {end_node} not found in graph&#34;)
+        
+        # Handle case where start and end are the same
+        if start_node == end_node:
+            node_data = self.graph.nodes[start_node]
+            return [(node_data.get(&#39;x&#39;, start_lon), node_data.get(&#39;y&#39;, start_lat))], 0.0
+        
+        # Check if graph is projected for accurate distance calculations
+        is_projected = False
+        try:
+            is_projected = ox.projection.is_projected(self.graph)
+        except:
+            pass
+        
+        # Calculate shortest path
+        if is_projected:
+            # Use length attribute for projected graphs
+            route = nx.shortest_path(
+                self.graph, 
+                start_node, 
+                end_node, 
+                weight=&#39;length&#39;
+            )
+        else:
+            # Use haversine distance for unprojected graphs
+            def haversine_weight(u, v, d):
+                u_data = self.graph.nodes[u]
+                v_data = self.graph.nodes[v]
+                return self.haversine_distance(
+                    u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                    v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                )
+            
+            route = nx.shortest_path(
+                self.graph, 
+                start_node, 
+                end_node, 
+                weight=haversine_weight
+            )
+        
+        # Get route coordinates and distance
+        route_coords = []
+        for n in route:
+            node_data = self.graph.nodes[n]
+            x = node_data.get(&#39;x&#39;, 0)
+            y = node_data.get(&#39;y&#39;, 0)
+            route_coords.append((x, y))
+        
+        # Calculate total distance
+        distance = 0.0
+        for i in range(len(route) - 1):
+            u, v = route[i], route[i + 1]
+            if self.graph.has_edge(u, v):
+                if is_projected:
+                    edge_data = self.graph[u][v]
+                    distance += edge_data.get(&#39;length&#39;, 0.0)
+                else:
+                    # Use haversine distance for unprojected graphs
+                    u_data = self.graph.nodes[u]
+                    v_data = self.graph.nodes[v]
+                    distance += self.haversine_distance(
+                        u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                        v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                    )
+        
+        return route_coords, distance
+        
+    except nx.NetworkXNoPath:
+        raise ValueError(&#34;No path found between the specified points&#34;)
+    except Exception as e:
+        raise RuntimeError(f&#34;Error calculating shortest path: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Find shortest path between two points.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_point</code></strong></dt>
+<dd>(lon, lat) tuple</dd>
+<dt><strong><code>end_point</code></strong></dt>
+<dd>(lon, lat) tuple</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Tuple of (path_coordinates, distance_in_meters)</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.validate_coordinates"><code class="name flex">
+<span>def <span class="ident">validate_coordinates</span></span>(<span>self, lon: float, lat: float) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_coordinates(self, lon: float, lat: float) -&gt; bool:
+    &#34;&#34;&#34;Validate coordinate values.&#34;&#34;&#34;
+    return -180 &lt;= lon &lt;= 180 and -90 &lt;= lat &lt;= 90</code></pre>
+</details>
+<div class="desc"><p>Validate coordinate values.</p></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.visualize_route"><code class="name flex">
+<span>def <span class="ident">visualize_route</span></span>(<span>self,<br>start_point: Tuple[float, float],<br>end_point: Tuple[float, float],<br>save_path: str | None = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize_route(self, start_point: Tuple[float, float], 
+                   end_point: Tuple[float, float], 
+                   save_path: Optional[str] = None) -&gt; None:
+    &#34;&#34;&#34;
+    Visualize the route between two points.
+    
+    Args:
+        start_point: (lon, lat) tuple for start
+        end_point: (lon, lat) tuple for end
+        save_path: Optional path to save the plot as image
+    &#34;&#34;&#34;
+    try:
+        import matplotlib.pyplot as plt
+        
+        # Get the route
+        route_coords, distance = self.shortest_path(start_point, end_point)
+        
+        # Extract node IDs for the route
+        start_lon, start_lat = start_point
+        end_lon, end_lat = end_point
+        
+        start_node = ox.distance.nearest_nodes(self.graph, start_lon, start_lat)
+        end_node = ox.distance.nearest_nodes(self.graph, end_lon, end_lat)
+        
+        # Get the route as node IDs
+        is_projected = False
+        try:
+            is_projected = ox.projection.is_projected(self.graph)
+        except:
+            pass
+        
+        if is_projected:
+            route_nodes = nx.shortest_path(self.graph, start_node, end_node, weight=&#39;length&#39;)
+        else:
+            def haversine_weight(u, v, d):
+                u_data = self.graph.nodes[u]
+                v_data = self.graph.nodes[v]
+                return self.haversine_distance(
+                    u_data.get(&#39;y&#39;, 0), u_data.get(&#39;x&#39;, 0),
+                    v_data.get(&#39;y&#39;, 0), v_data.get(&#39;x&#39;, 0)
+                )
+            route_nodes = nx.shortest_path(self.graph, start_node, end_node, weight=haversine_weight)
+        
+        # Create the plot
+        fig, ax = plt.subplots(figsize=(12, 8))
+        
+        # Plot the route
+        ox.plot_graph_route(self.graph, route_nodes, ax=ax, 
+                          route_color=&#39;red&#39;, route_linewidth=3, 
+                          route_alpha=0.8, show=False)
+        
+        # Add start and end markers
+        ax.scatter(start_lon, start_lat, c=&#39;green&#39;, s=100, marker=&#39;o&#39;, 
+                  label=&#39;Start&#39;, zorder=5, edgecolors=&#39;black&#39;, linewidth=2)
+        ax.scatter(end_lon, end_lat, c=&#39;red&#39;, s=100, marker=&#39;s&#39;, 
+                  label=&#39;End&#39;, zorder=5, edgecolors=&#39;black&#39;, linewidth=2)
+        
+        # Add title and legend
+        ax.set_title(f&#39;Route from {start_point} to {end_point}\nDistance: {distance:.2f} meters&#39;)
+        ax.legend()
+        
+        # Save if requested
+        if save_path:
+            plt.savefig(save_path, dpi=300, bbox_inches=&#39;tight&#39;)
+            print(f&#34;Route visualization saved to: {save_path}&#34;)
+        
+        plt.show()
+        
+    except ImportError:
+        print(&#34;Matplotlib is required for visualization. Install with: pip install matplotlib&#34;)
+    except Exception as e:
+        print(f&#34;Error visualizing route: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Visualize the route between two points.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_point</code></strong></dt>
+<dd>(lon, lat) tuple for start</dd>
+<dt><strong><code>end_point</code></strong></dt>
+<dd>(lon, lat) tuple for end</dd>
+<dt><strong><code>save_path</code></strong></dt>
+<dd>Optional path to save the plot as image</dd>
+</dl></div>
+</dd>
+<dt id="router.router.SPLRouterEngine.visualize_route_interactive"><code class="name flex">
+<span>def <span class="ident">visualize_route_interactive</span></span>(<span>self, start_point: Tuple[float, float], end_point: Tuple[float, float]) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize_route_interactive(self, start_point: Tuple[float, float], 
+                              end_point: Tuple[float, float]) -&gt; None:
+    &#34;&#34;&#34;
+    Create an interactive visualization using folium.
+    
+    Args:
+        start_point: (lon, lat) tuple for start
+        end_point: (lon, lat) tuple for end
+    &#34;&#34;&#34;
+    try:
+        import folium
+        
+        # Get the route
+        route_coords, distance = self.shortest_path(start_point, end_point)
+        
+        # Calculate center point for the map
+        center_lat = (start_point[1] + end_point[1]) / 2
+        center_lon = (start_point[0] + end_point[0]) / 2
+        
+        # Create the map
+        m = folium.Map(location=[center_lat, center_lon], 
+                      zoom_start=13, 
+                      tiles=&#39;OpenStreetMap&#39;)
+        
+        # Add start marker
+        folium.Marker(
+            location=[start_point[1], start_point[0]],
+            popup=f&#39;Start&lt;br&gt;Distance: {distance:.2f}m&#39;,
+            icon=folium.Icon(color=&#39;green&#39;, icon=&#39;info-sign&#39;)
+        ).add_to(m)
+        
+        # Add end marker
+        folium.Marker(
+            location=[end_point[1], end_point[0]],
+            popup=f&#39;End&lt;br&gt;Distance: {distance:.2f}m&#39;,
+            icon=folium.Icon(color=&#39;red&#39;, icon=&#39;info-sign&#39;)
+        ).add_to(m)
+        
+        # Add route line
+        route_locations = [[coord[1], coord[0]] for coord in route_coords]
+        folium.PolyLine(
+            locations=route_locations,
+            color=&#39;red&#39;,
+            weight=4,
+            opacity=0.8,
+            popup=f&#39;Route&lt;br&gt;Distance: {distance:.2f}m&#39;
+        ).add_to(m)
+        
+        # Save the map
+        map_path = &#39;route_visualization.html&#39;
+        m.save(map_path)
+        print(f&#34;Interactive route visualization saved to: {map_path}&#34;)
+        print(&#34;Open the HTML file in your web browser to view the interactive map.&#34;)
+        
+    except ImportError:
+        print(&#34;Folium is required for interactive visualization. Install with: pip install folium&#34;)
+    except Exception as e:
+        print(f&#34;Error creating interactive visualization: {str(e)}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Create an interactive visualization using folium.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_point</code></strong></dt>
+<dd>(lon, lat) tuple for start</dd>
+<dt><strong><code>end_point</code></strong></dt>
+<dd>(lon, lat) tuple for end</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="router" href="index.html">router</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="router.router.SPLRouterEngine" href="#router.router.SPLRouterEngine">SPLRouterEngine</a></code></h4>
+<ul class="">
+<li><code><a title="router.router.SPLRouterEngine.get_graph_info" href="#router.router.SPLRouterEngine.get_graph_info">get_graph_info</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.haversine_distance" href="#router.router.SPLRouterEngine.haversine_distance">haversine_distance</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.load_graph" href="#router.router.SPLRouterEngine.load_graph">load_graph</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.plot_route_stats" href="#router.router.SPLRouterEngine.plot_route_stats">plot_route_stats</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.reverse_geocode_multiple" href="#router.router.SPLRouterEngine.reverse_geocode_multiple">reverse_geocode_multiple</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.reverse_geocode_nominatim" href="#router.router.SPLRouterEngine.reverse_geocode_nominatim">reverse_geocode_nominatim</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.reverse_geocode_photon" href="#router.router.SPLRouterEngine.reverse_geocode_photon">reverse_geocode_photon</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.shortest_path" href="#router.router.SPLRouterEngine.shortest_path">shortest_path</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.validate_coordinates" href="#router.router.SPLRouterEngine.validate_coordinates">validate_coordinates</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.visualize_route" href="#router.router.SPLRouterEngine.visualize_route">visualize_route</a></code></li>
+<li><code><a title="router.router.SPLRouterEngine.visualize_route_interactive" href="#router.router.SPLRouterEngine.visualize_route_interactive">visualize_route_interactive</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
