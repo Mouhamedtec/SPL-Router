@@ -13,8 +13,8 @@ import osmnx as ox
 from typing import Tuple
 
 # Add the current directory to the path to import the router module
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from router.router import SPLRouterEngine
+# sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from router import SPLRouterEngine
 
 
 class TestSPLRouterEngine(unittest.TestCase):
