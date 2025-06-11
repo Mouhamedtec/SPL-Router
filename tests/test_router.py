@@ -251,6 +251,69 @@ class TestSPLRouterEngine(unittest.TestCase):
         self.assertFalse(router.validate_coordinates(0.0, 90.1))
         self.assertFalse(router.validate_coordinates(0.0, -90.1))
 
+    @patch('requests.get')
+    def test_reverse_geocode_nominatim(self, mock_get):
+        """Test Nominatim reverse geocoding."""
+        router = SPLRouterEngine(place_name="Test")
+        router.graph = self.mock_graph
+
+        # Mock successful response
+        mock_response = Mock()
+        mock_response.json.return_value = {"address": "123 Test St"}
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+
+        # Test with default server
+        result = router.reverse_geocode_nominatim(-122.4194, 37.7749)
+        self.assertEqual(result["address"], "123 Test St")
+
+        # Test with custom server
+        custom_server = "https://nominatim.openstreetmap.org"
+        result = router.reverse_geocode_nominatim(-122.4194, 37.7749, server_url=custom_server)
+        self.assertEqual(result["address"], "123 Test St")
+
+
+    @patch('requests.get')
+    def test_reverse_geocode_photon(self, mock_get):
+        """Test Photon reverse geocoding."""
+        router = SPLRouterEngine(place_name="Test")
+        router.graph = self.mock_graph
+
+        # Mock successful response
+        mock_response = Mock()
+        mock_response.json.return_value = {"features": [{"properties": {"name": "Test Location"}}]}
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+
+        result = router.reverse_geocode_photon(-122.4194, 37.7749)
+        self.assertIn("features", result)
+
+    def test_reverse_geocode_multiple(self):
+        """Test multiple reverse geocoding services."""
+        router = SPLRouterEngine(place_name="Test")
+        router.graph = self.mock_graph
+
+        with patch('requests.get') as mock_get:
+            mock_response = Mock()
+            mock_response.json.return_value = {"address": "Test"}
+            mock_response.raise_for_status.return_value = None
+            mock_get.return_value = mock_response
+
+            results = router.reverse_geocode_multiple(-122.4194, 37.7749)
+            
+            self.assertIn("nominatim", results)
+            self.assertIn("photon", results)
+            self.assertIn("osm_nodes", results)
+            self.assertIn("timestamp", results)
+
+    def test_reverse_geocode_error_handling(self):
+        """Test error handling in reverse geocoding."""
+        router = SPLRouterEngine(place_name="Test")
+        router.graph = self.mock_graph
+
+        with patch('requests.get', side_effect=Exception("Network error")):
+            result = router.reverse_geocode_nominatim(-122.4194, 37.7749)
+            self.assertIn("error", result)
 
 class TestSPLRouterEngineIntegration(unittest.TestCase):
     """Integration tests for the SPLRouterEngine class."""
@@ -306,6 +369,27 @@ class TestSPLRouterEngineIntegration(unittest.TestCase):
                 result = router.validate_coordinates(lon, lat)
                 self.assertEqual(result, expected, f"Failed for coordinates ({lon}, {lat})")
 
+    @unittest.skip("Skip integration test - requires internet connection")
+    def test_reverse_geocoding_integration(self):
+        """Test reverse geocoding with real services."""
+        router = SPLRouterEngine(place_name="Test")
+        router.graph = self.mock_graph
+
+        # Test coordinates (San Francisco)
+        lon, lat = -122.4194, 37.7749
+
+        # Test Nominatim
+        nom_result = router.reverse_geocode_nominatim(lon, lat)
+        self.assertNotIn("error", nom_result)
+
+        # Test Photon
+        photon_result = router.reverse_geocode_photon(lon, lat)
+        self.assertNotIn("error", photon_result)
+
+        # Test multiple services
+        multi_result = router.reverse_geocode_multiple(lon, lat)
+        self.assertIn("nominatim", multi_result)
+        self.assertIn("photon", multi_result)
 
 def run_tests():
     """Run all tests."""
